@@ -10,11 +10,11 @@ RUN sudo apt-get update && sudo apt-get install yarn
 
 # copy gemfile from host to container & update
 WORKDIR /innCloud
-COPY Gemfile ./Gemfile
-COPY Gemfile.lock ./Gemfile.lock
+COPY Gemfile /innCloud/Gemfile
+COPY Gemfile.lock /innCloud/Gemfile.lock
 RUN bundle install
 
-# COPY . /myapp
+COPY . /innCloud
 
 # # Add a script to be executed every time the container starts.
 # COPY entrypoint.sh /usr/bin/

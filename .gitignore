@@ -1,0 +1,3 @@
+# Ignore Gemfiles and Gemfile.lock
+*/Gemfile.lock
+*/Gemfile
