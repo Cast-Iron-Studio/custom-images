@@ -1,4 +1,4 @@
-FROM ruby:2.7
+FROM ruby:3.0.0
 RUN apt-get update -qq && apt-get install -y apt-utils sudo nodejs
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
