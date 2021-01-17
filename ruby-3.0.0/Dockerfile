@@ -6,16 +6,14 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 RUN sudo apt-get update && sudo apt-get install yarn
 
-RUN mkdir /app
-# copy gemfile from host to container & update
-WORKDIR /app
-# COPY Gemfile /app/Gemfile
-# COPY Gemfile.lock /app/Gemfile.lock
-ADD Gemfile /app/Gemfile
-ADD Gemfile.lock /app/Gemfile.lock
+
+ENV APP_HOME /app
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+ADD Gemfile* $APP_HOME/
 RUN bundle install
 
-ADD . /innCloud
+ADD . $APP_HOME
 
 # # Add a script to be executed every time the container starts.
 # COPY entrypoint.sh /usr/bin/
