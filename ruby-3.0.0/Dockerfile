@@ -9,12 +9,10 @@ RUN sudo apt-get update && sudo apt-get install yarn
 # RUN gem install rails -q # do we need this? OG docker rails install doesn't have it
 
 # copy gemfile from host to container & update
+COPY . /innCloud
 WORKDIR /innCloud
-COPY Gemfile /innCloud/Gemfile
-COPY Gemfile.lock /innCloud/Gemfile.lock
 RUN bundle install
 
-COPY . /innCloud
 
 # # Add a script to be executed every time the container starts.
 # COPY entrypoint.sh /usr/bin/
